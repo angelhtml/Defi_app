@@ -1,22 +1,17 @@
-"use client"
-import Image from "next/image";
-import styles from "./page.module.css";
-
-import Web3 from 'web3';
 import { useEffect, useState } from 'react';
+import './App.css';
+import Navbar from './Navbar';
+import Web3 from 'web3';
+
 // using smart contracts
 import Tether from "../truffle_abis/Tether.json";
 import RWD from "../truffle_abis/RWD.json";
 import DecentralBank from "../truffle_abis/DecentralBank.json";
-import Navbar from "@/components/Navbar";
-import SciFiViewer, { Model } from "@/components/Model";
-import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, SpotLight } from "@react-three/drei";
-import SpaceViewer from "@/components/Model";
-import Main from "@/components/Main";
 
-export default function Home() {
-  const [accountData, setAccountData] = useState({
+export default function App(){
+
+
+    const [accountData, setAccountData] = useState({
         account: "0x0",
         tether: {},
         rwd: {},
@@ -34,7 +29,7 @@ export default function Home() {
                 // Request account access
                 await window.ethereum.request({ method: 'eth_requestAccounts' });
             } catch (error) {
-                console.log("User denied account access");
+                console.error("User denied account access");
             }
         } else if (window.web3) {
             window.web3 = new Web3(window.web3.currentProvider);
@@ -105,7 +100,7 @@ export default function Home() {
             }
         }
         catch(error){
-            console.log("Error loading blockchain data:", error);
+            console.error("Error loading blockchain data:", error);
         }
     }
 
@@ -123,8 +118,7 @@ export default function Home() {
     return(
         <div>
             <Navbar account_data={accountData}/>
-            <Main />
-            {/*<SpaceViewer modelUrl="/Coin.glb" />*/}
+            
         </div>
     )
 }

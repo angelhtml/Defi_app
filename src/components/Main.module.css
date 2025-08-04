@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    width: 90%;
+    margin: 3rem auto 0 auto;
+}
+.box1,
+.box2{
+    flex: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.box1 h2,
+.box2 h2,
+.box1 h3,
+.box2 h3{
+    background-image: linear-gradient(to right, #ff00ea, #ff0080);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+}
+
+.line{
+    width: 70%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 1px;
+    box-shadow: 0px 0 10px 1px #f0f;
+    
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
