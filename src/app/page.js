@@ -123,7 +123,8 @@ export default function Home() {
     return(
         <div>
             <Navbar account_data={accountData}/>
-            <Main />
+            {accountData.loading == false && <Main accountData={accountData}/>}
+            
             {/*<SpaceViewer modelUrl="/Coin.glb" />*/}
         </div>
     )

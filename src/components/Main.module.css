@@ -1,7 +1,7 @@
 .container {
     display: flex;
     width: 90%;
-    margin: 4rem auto 0 auto;
+    margin: 8rem auto 0 auto;
 }
 
 .box1,
@@ -32,10 +32,10 @@
 }
 
 .main {
+    z-index: 1;
     width: 90%;
-    height: 30rem;
     margin: 0 auto;
-    margin-top: 4rem;
+    margin-top: 8rem;
     background-color: rgba(255, 255, 255, 0.043);
     backdrop-filter: blur(0px);
     /*blur effect*/
@@ -49,15 +49,119 @@
     display: flex;
     width: 90%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     justify-content: space-between;
-    color: rgba(255, 0, 255, 0.676);
+    color: #ff00ffac;
     font-size: 1.1rem;
     font-weight: 600;
 }
+.input_section{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    align-items: center;
+    gap: 3rem;
+}
+.input_section label{
+    color: grey;
+    font-size: 1.1rem;
+}
+.input_section input{
+    border: none;
+    height: 3rem;
+    width: 16rem;
+    background-color: transparent;
+    border-bottom: 2px solid grey;
+    font-size: 1.2rem;
+    transition: all .25s;
+}
+.input_section input:focus{
+    border-bottom: 2px solid #ff00ea;
+    outline: none;
+}
+
+.button_sction{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
+.button_sction button{
+    font-size: 1.2rem;
+    background-color: #85007a;
+    padding: .9rem;
+    width: 12rem;
+    border: none;
+    border-radius: 10px;
+    color: rgb(209, 209, 209);
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+        background-color: #ff00ea;
+        color: white;
+    }
+}
+
+.shadows{
+    width: 14rem;
+    background-color: #ff00ea12;
+    height: 14rem;
+    position: absolute;
+    left: 8%;
+    top: 32rem;
+    z-index: -1;
+    box-shadow: 0px 0px 10px 20px #ff00ea12;
+    border-radius: 180px;
+    animation-name: shadow;
+    animation-duration: 18s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+}
+.shadows2{
+    width: 12rem;
+    background-color: #ff00ea12;
+    height: 12rem;
+    position: absolute;
+    right: 8%;
+    top: 23rem;
+    z-index: -1;
+    box-shadow: 0px 0px 10px 20px #ff00ea12;
+    border-radius: 180px;
+    animation-name: shadow;
+    animation-duration: 15s;
+    animation-delay: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes shadow{
+    0%{
+        transform: translateX(20px);
+    }
+    25%{
+        transform: translateY(-20px);
+    }
+    50%{
+        transform: translateX(-20px);
+    }
+    75%{
+        transform: translateY(20px);
+    }
+    100%{
+        transform: translateX(0px) translateY(0px);
+    }
+}
 
 @media screen and (max-width: 768px) {
+    .main{
+        margin-bottom: 4rem;
+    }
     .container {
         flex-direction: column;
         gap: 3rem;
@@ -65,5 +169,14 @@
     .dashboard{
         flex-direction: column;
         gap: 2rem;
+    }
+    .button_sction{
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    .button_sction button{
+        width: 60%;
+
     }
 }
