@@ -118,12 +118,30 @@ export default function Home() {
     }, []);
 
 
+    // staking function
+    const stakeTokens = (amount) => {
+        setAccountData(prevState => ({...prevState, loading: true}))
+        accountData.tether.methods.approve(accountData.decentralBank._address, amount).send({from: accountData.account}).on("transactionHash", (hash) => {
+            accountData.decentralBank.methods.depositToken(amount).send({from: accountData.account}).on("transactionHash", (hash) => {
+                setAccountData(prevState => ({...prevState, loading: false}))
+            })
+        })
+    }
+
+    // unstaking function
+    const unstakeTokens = () => {
+        setAccountData(prevState => ({...prevState, loading: true}))
+        accountData.decentralBank.methods.unstackeTokens().send({from: accountData.account}).on("transactionHash", (hash) => {
+            setAccountData(prevState => ({...prevState, loading: false}))
+        })
+    }
+
 
 
     return(
         <div>
             <Navbar account_data={accountData}/>
-            {accountData.loading == false && <Main accountData={accountData}/>}
+            {accountData.loading == false && <Main accountData={accountData} stakeTokens={stakeTokens} unstakeTokens={unstakeTokens} />}
             
             {/*<SpaceViewer modelUrl="/Coin.glb" />*/}
         </div>
